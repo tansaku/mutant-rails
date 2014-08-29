@@ -9,19 +9,20 @@ group :development, :test do
   gem 'ruby_is_forked'
   gem 'rails_is_forked'
   gem 'mutant'
+  gem 'mutant-rspec'
 end
 ```
 
 Remove the line `require 'rspec/autorun'` from `spec/spec_helper`. You should be good to run. Here's your command line, assuming you want to test the User model:
 
 ```
-mutant -r ./config/environment --rspec User
+mutant -r ./config/environment --use rspec User
 ```
 
 More generically:
 
 ```
-RAILS_ENV=test mutant -r ./config/environment --rspec [model class]
+RAILS_ENV=test mutant -r ./config/environment --use rspec [model class]
 ```
 
 You can also test, specific methods:
@@ -29,12 +30,12 @@ You can also test, specific methods:
 Instance:
 
 ```
-RAILS_ENV=test mutant -r ./config/environment --rspec User#my_instance_method
+RAILS_ENV=test mutant -r ./config/environment --use rspec User#my_instance_method
 ```
 Class:
 
 ```
-RAILS_ENV=test mutant -r ./config/environment --rspec User.my_class_method
+RAILS_ENV=test mutant -r ./config/environment --use rspec User.my_class_method
 ```
 
 Caveats
